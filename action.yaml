@@ -5,6 +5,9 @@ inputs:
   github-user:
     description: "User"
     required: true
+  github-ref:
+    description: "Name of current ref"
+    required: true
   working-directory:
     description: "Working Directory"
     required: false
@@ -31,4 +34,4 @@ runs:
 
     - name: Push Version
       shell: bash
-      run: git push --follow-tags origin HEAD
+      run: git push --follow-tags origin "${{ inputs.github-ref }}"
