@@ -26,11 +26,6 @@ runs:
         git config --global user.email "github-actions@github.com"
         git config --global user.name "${{ inputs.github-user }}"
 
-    - name: Install Dependencies
-      working-directory: ${{ inputs.working-directory }}
-      shell: bash
-      run: npm ci
-
     - name: Checkout Code
       uses: actions/checkout@v3
       with:
@@ -38,9 +33,10 @@ runs:
         token: ${{ inputs.github-token }}
         fetch-depth: 0
 
-    - name: Branch
+    - name: Install Dependencies
+      working-directory: ${{ inputs.working-directory }}
       shell: bash
-      run: git checkout ${{ inputs.github-ref }}
+      run: npm ci
 
     - name: Update Version
       shell: bash
