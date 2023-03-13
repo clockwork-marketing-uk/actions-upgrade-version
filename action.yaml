@@ -34,4 +34,4 @@ runs:
 
     - name: Push Version
       shell: bash
-      run: git push --follow-tags origin "${{ inputs.github-ref }}"
+      run: git push origin "${{ inputs.github-ref }}"
