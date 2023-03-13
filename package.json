@@ -1,6 +1,6 @@
 {
   "name": "actions-upgrade-version",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "description": "Upgrade the version of the repository in the package.json",
   "author": "Clockwork Marketing <dev@clock-work.co.uk>",
   "license": "ISC"
