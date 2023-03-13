@@ -31,4 +31,4 @@ runs:
 
     - name: Push Version
       shell: bash
-      run: git push
+      run: git push --follow-tags origin HEAD
