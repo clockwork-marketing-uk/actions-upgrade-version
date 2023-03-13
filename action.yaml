@@ -2,6 +2,9 @@ name: Upgrade Version
 description: "Upgrade the version of the repository in the package.json"
 
 inputs:
+  github-token:
+    description: "Github token"
+    required: true
   github-user:
     description: "User"
     required: true
@@ -28,13 +31,20 @@ runs:
         git config --global user.email "github-actions@github.com"
         git config --global user.name "${{ inputs.github-user }}"
 
-    - name: Update Version
-      shell: bash
-      run: npm run release
+    - name: Checkout Code
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ inputs.github-ref }}
+        token: ${{ inputs.github-token }}
+        fetch-depth: 0
 
     - name: Branch
       shell: bash
       run: git checkout ${{ inputs.github-ref }}
+
+    - name: Update Version
+      shell: bash
+      run: npm run release
 
     - name: Push Version
       shell: bash
