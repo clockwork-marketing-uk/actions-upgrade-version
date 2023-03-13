@@ -19,17 +19,17 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Install Dependencies
-      working-directory: ${{ inputs.working-directory }}
-      shell: bash
-      run: npm ci
-
     - name: Set github
       id: github
       shell: bash
       run: |
         git config --global user.email "github-actions@github.com"
         git config --global user.name "${{ inputs.github-user }}"
+
+    - name: Install Dependencies
+      working-directory: ${{ inputs.working-directory }}
+      shell: bash
+      run: npm ci
 
     - name: Checkout Code
       uses: actions/checkout@v3
