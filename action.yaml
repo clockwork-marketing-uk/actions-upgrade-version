@@ -28,3 +28,7 @@ runs:
     - name: Update Version
       shell: bash
       run: npm run release
+
+    - name: Push Version
+      shell: bash
+      run: git push
