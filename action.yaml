@@ -32,6 +32,10 @@ runs:
       shell: bash
       run: npm run release
 
+    - name: Branch
+      shell: bash
+      run: git checkout ${{ inputs.github-ref }}
+
     - name: Push Version
       shell: bash
-      run: git push --follow-tags origin ${{ inputs.github-ref }}
+      run: git push
