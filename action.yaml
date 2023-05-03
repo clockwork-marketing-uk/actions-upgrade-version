@@ -33,10 +33,18 @@ runs:
         token: ${{ inputs.github-token }}
         fetch-depth: 0
 
+    - name: Install node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+        registry-url: 'https://registry.npmjs.org'
+
     - name: Install Dependencies
       working-directory: ${{ inputs.working-directory }}
       shell: bash
       run: npm ci
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Update Version
       shell: bash
