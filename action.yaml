@@ -5,6 +5,9 @@ inputs:
   github-token:
     description: "Github token"
     required: true
+  npm-token:
+    description: "NPM token"
+    required: true
   github-user:
     description: "User"
     required: true
@@ -44,7 +47,7 @@ runs:
       shell: bash
       run: npm ci
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ inputs.npm-token }}
 
     - name: Update Version
       shell: bash
