@@ -15,7 +15,6 @@ Upgrade the version of the repository in the `package.json`
 
 ```
 
-
 ### Release Script
 
 Example using standard version
