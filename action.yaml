@@ -43,6 +43,7 @@ runs:
         registry-url: 'https://registry.npmjs.org'
 
     - name: Authenticate with private NPM package
+      shell: bash
       run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} @fortawesome:registry=https://npm.fontawesome.com/ //npm.fontawesome.com/:_authToken=${{ secrets.FA_NPM_TOKEN }}" > ~/.npmrc
 
     - name: Install Dependencies
