@@ -5,12 +5,6 @@ inputs:
   github-token:
     description: "Github token"
     required: true
-  npm-token:
-    description: "NPM token"
-    required: true
-  fa_npm_token:
-    description: "FA NPM token"
-    required: true
   github-user:
     description: "User"
     required: true
@@ -39,22 +33,10 @@ runs:
         token: ${{ inputs.github-token }}
         fetch-depth: 0
 
-    - name: Install node
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16.x'
-        registry-url: 'https://registry.npmjs.org'
-
-    - name: Authenticate with private NPM package
-      shell: bash
-      run: echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-token }} @fortawesome:registry=https://npm.fontawesome.com/ //npm.fontawesome.com/:_authToken=${{ inputs.fa_npm_token }}" > ~/.npmrc
-
     - name: Install Dependencies
       working-directory: ${{ inputs.working-directory }}
       shell: bash
       run: npm ci
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.npm-token }}
 
     - name: Update Version
       shell: bash
