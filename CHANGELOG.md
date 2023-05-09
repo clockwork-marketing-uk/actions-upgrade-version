@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## Logs
 
-### 1.1.2 (2023-03-13)
+### 1.1.4 (2023-03-13)
 
 Add fortawesome token
 

@@ -8,6 +8,9 @@ inputs:
   npm-token:
     description: "NPM token"
     required: true
+  fa_npm_token:
+    description: "FA NPM token"
+    required: true
   github-user:
     description: "User"
     required: true
@@ -44,7 +47,7 @@ runs:
 
     - name: Authenticate with private NPM package
       shell: bash
-      run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} @fortawesome:registry=https://npm.fontawesome.com/ //npm.fontawesome.com/:_authToken=${{ secrets.FA_NPM_TOKEN }}" > ~/.npmrc
+      run: echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-token }} @fortawesome:registry=https://npm.fontawesome.com/ //npm.fontawesome.com/:_authToken=${{ inputs.fa_npm_token }}" > ~/.npmrc
 
     - name: Install Dependencies
       working-directory: ${{ inputs.working-directory }}
