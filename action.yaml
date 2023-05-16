@@ -11,6 +11,12 @@ inputs:
   github-ref:
     description: "Name of current ref"
     required: true
+  fa-npm-token:
+    description: "Fontawesome Token"
+    required: true
+  npm_token:
+    description: "NPM Token"
+    required: true
   working-directory:
     description: "Working Directory"
     required: false
@@ -36,7 +42,10 @@ runs:
     - name: Install Dependencies
       working-directory: ${{ inputs.working-directory }}
       shell: bash
-      run: npm ci
+      run: |
+          npm config set '//npm.fontawesome.com/:_authToken' "${{ inputs.fa-npm-token }}"
+          npm config set '//registry.npmjs.org/:_authToken' "${{ inputs.npm_token }}"
+          npm ci
 
     - name: Update Version
       shell: bash
